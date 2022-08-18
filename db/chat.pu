@@ -1,0 +1,36 @@
+@startuml
+title chat_db
+entity users {
+  id
+  name
+  mail
+  phone
+  icon
+  enter_date
+  delete_date
+}
+
+entity messages {
+  id
+  user_id(FK)
+  message
+  create_date
+  update_date
+  thread_id(FK)
+}
+
+entity channels {
+  id
+  user_id(FK)
+  create_date
+  update_date
+}
+
+entity threads {
+  id
+  user_id(FK)
+  message_id(FK)
+  create_date
+  update_date
+}
+@enduml
