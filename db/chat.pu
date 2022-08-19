@@ -6,6 +6,7 @@ entity users {
   mail
   phone
   icon
+  workspace_id(FK)
   enter_date
   delete_date
 }
@@ -17,11 +18,12 @@ entity messages {
   create_date
   update_date
   thread_id(FK)
+  channel_id(FK)
 }
 
 entity channels {
   id
-  user_id(FK)
+  name
   create_date
   update_date
 }
@@ -29,8 +31,35 @@ entity channels {
 entity threads {
   id
   user_id(FK)
-  message_id(FK)
+  channel_id(FK)
   create_date
   update_date
 }
+
+entity user_channel {
+  id
+  user_id(FK)
+  channel_id(FK)
+}
+
+entity workspaces {
+  id
+  name
+  create_date
+  update_date
+}
+
+entity user_workspace {
+  id
+  user_id(FK)
+  workspace_id(FK)
+}
+
+users -{ user_channel
+user_channel }- channels
+users -{ messages
+user_workspace }- users
+workspaces -{ user_workspace
+messages -{ threads
+channels }-  messages
 @enduml
