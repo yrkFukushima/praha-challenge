@@ -62,4 +62,5 @@ user_workspace }- users
 workspaces -{ user_workspace
 messages -{ threads
 channels }-  messages
+channels -{threads
 @enduml
